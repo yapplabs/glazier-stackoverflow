@@ -1,0 +1,9 @@
+body {
+  background-color: green;
+  color: red;
+}
+
+#card {
+  height:500px;
+  width:500px;
+}
