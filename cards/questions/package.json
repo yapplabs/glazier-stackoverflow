@@ -2,6 +2,7 @@
   "name": "stackoverflow-questions",
   "glazierConfig": {
     "consumes": [
+      "repository",
       "authenticatedStackoverflowApi"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",

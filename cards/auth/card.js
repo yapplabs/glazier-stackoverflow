@@ -1,4 +1,5 @@
 import 'conductor' as Conductor;
+import 'app/consumers/authenticated_stackoverflow_api' as AuthenticatedStackoverflowApiConsumer;
 
 // If you need them, you can require additional vendored javascript files from Glazier:
 Conductor.require('/vendor/jquery.js');
@@ -10,7 +11,15 @@ Conductor.requireCSS('card.css');
 
 var card = Conductor.card({
   consumers: {
-    'repository': Conductor.Oasis.Consumer
+    'oauth': Conductor.Oasis.Consumer.extend({
+      getAccessTokenPromise: function(){
+        return this.request('authorize', {
+          authorizeUrl: 'https://stackexchange.com/oauth/dialog'
+        });
+      }
+    }),
+    'fullXhr': Conductor.Oasis.Consumer,
+    'authenticatedStackoverflowApi': AuthenticatedStackoverflowApiConsumer
   },
 
   render: function (intent, dimensions) {
@@ -21,15 +30,10 @@ var card = Conductor.card({
       };
     }
 
-    document.body.innerHTML = "<div id=\"card\">Hello Bootstrap.  Click me.</div>";
+    document.body.innerHTML = "<div id=\"card\">This will be hidden.</div>";
   },
 
   activate: function() {
-    card.consumers.repository.request('getRepository').then(function(name) {
-      $('#card').click(function() {
-        alert('You clicked me in ' + name);
-      });
-    });
   },
 
   resize: function(dimensions) {

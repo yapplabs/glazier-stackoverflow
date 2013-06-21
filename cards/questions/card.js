@@ -10,7 +10,12 @@ Conductor.requireCSS('card.css');
 
 var card = Conductor.card({
   consumers: {
-    'repository': Conductor.Oasis.Consumer
+    'repository': Conductor.Oasis.Consumer.extend({
+      getName: function(){
+        return this.request('getRepository');
+      }
+    }),
+    'authenticatedStackoverflowApi': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
@@ -21,15 +26,23 @@ var card = Conductor.card({
       };
     }
 
-    document.body.innerHTML = "<div id=\"card\">Hello Bootstrap.  Click me.</div>";
+    card.consumers.repository.getName().then(function(repositoryName){
+      document.body.innerHTML = "<div id=\"card\">To load StackOverflow questions for " + repositoryName + ". Click me.</div>";
+      $('#card').click(function() {
+          var tag = card.repositoryName.split("/")[1];
+          var url = "/2.1/questions?order=desc&sort=creation&tagged=ember.js&site=stackoverflow";
+          card.consumers.authenticatedStackoverflowApi.request("ajax", {
+            url: url,
+            type: 'GET',
+            dataType: 'json'
+          }).then(function(questions){
+            $('#card').text(JSON.stringify(questions));
+          }).then(undefined, Conductor.error);
+      });
+    }).then(undefined, Conductor.error);
   },
 
   activate: function() {
-    card.consumers.repository.request('getRepository').then(function(name) {
-      $('#card').click(function() {
-        alert('You clicked me in ' + name);
-      });
-    });
   },
 
   resize: function(dimensions) {
