@@ -25,7 +25,7 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
     ajax: function (promise, ajaxOpts) {
       var card = this.card;
 
-      card.getAccessTokenPromise().then(function (accessToken) {
+      card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
 
         if (!ajaxOpts.data) {
           ajaxOpts.data = {};

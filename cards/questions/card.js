@@ -29,7 +29,7 @@ var card = Conductor.card({
     card.consumers.repository.getName().then(function(repositoryName){
       document.body.innerHTML = "<div id=\"card\">To load StackOverflow questions for " + repositoryName + ". Click me.</div>";
       $('#card').click(function() {
-          var tag = card.repositoryName.split("/")[1];
+          var tag = repositoryName.split("/")[1];
           var url = "/2.1/questions?order=desc&sort=creation&tagged=ember.js&site=stackoverflow";
           card.consumers.authenticatedStackoverflowApi.request("ajax", {
             url: url,
