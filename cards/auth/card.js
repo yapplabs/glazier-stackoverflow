@@ -13,8 +13,9 @@ var card = Conductor.card({
   consumers: {
     'oauth': Conductor.Oasis.Consumer.extend({
       getAccessTokenPromise: function(){
+        var url = 'https://stackexchange.com/oauth/dialog';
         return this.request('authorize', {
-          authorizeUrl: 'https://stackexchange.com/oauth/dialog'
+          authorizeUrl: url
         });
       }
     }),
