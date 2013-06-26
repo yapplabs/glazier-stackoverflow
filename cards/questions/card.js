@@ -1,11 +1,9 @@
 import 'conductor' as Conductor;
 
-// If you need them, you can require additional vendored javascript files from Glazier:
 Conductor.require('/vendor/jquery.js');
-// Conductor.require('/vendor/handlebars.js');
-// Conductor.require('/vendor/ember-latest.js');
-// Conductor.require('/vendor/loader.js');
-
+Conductor.require('/vendor/handlebars.js');
+Conductor.require('/vendor/ember-latest.js');
+Conductor.require('/vendor/loader.js');
 Conductor.requireCSS('card.css');
 
 var card = Conductor.card({
@@ -26,23 +24,18 @@ var card = Conductor.card({
       };
     }
 
+    document.body.innerHTML = "<div id=\"card\"></div>";
+
     card.consumers.repository.getName().then(function(repositoryName){
-      document.body.innerHTML = "<div id=\"card\">To load StackOverflow questions for " + repositoryName + ". Click me.</div>";
-      $('#card').click(function() {
-          var tag = repositoryName.split("/")[1];
-          var url = "/2.1/questions?order=desc&sort=creation&tagged=ember.js&site=stackoverflow";
-          card.consumers.authenticatedStackoverflowApi.request("ajax", {
-            url: url,
-            type: 'GET',
-            dataType: 'json'
-          }).then(function(questions){
-            $('#card').text(JSON.stringify(questions));
-          }).then(undefined, Conductor.error);
-      });
-    }).then(undefined, Conductor.error);
+      Ember.run(App, 'advanceReadiness');
+      // Danger: infinite loop results if you "return App;" here
+    });
+
+    return App;
   },
 
   activate: function() {
+    window.App = requireModule('app/application');
   },
 
   resize: function(dimensions) {
