@@ -1,13 +1,8 @@
 import 'conductor' as Conductor;
 import 'app/consumers/authenticated_stackoverflow_api' as AuthenticatedStackoverflowApiConsumer;
 
-// If you need them, you can require additional vendored javascript files from Glazier:
 Conductor.require('/vendor/jquery.js');
-// Conductor.require('/vendor/handlebars.js');
-// Conductor.require('/vendor/ember-latest.js');
-// Conductor.require('/vendor/loader.js');
-
-Conductor.requireCSS('card.css');
+Conductor.requireCSS('/cards/stackoverflow-auth/card.css');
 
 var card = Conductor.card({
   consumers: {

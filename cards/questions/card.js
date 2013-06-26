@@ -4,7 +4,7 @@ Conductor.require('/vendor/jquery.js');
 Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/loader.js');
-Conductor.requireCSS('card.css');
+Conductor.requireCSS('/cards/stackoverflow-questions/card.css');
 
 var card = Conductor.card({
   consumers: {
