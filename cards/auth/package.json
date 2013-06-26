@@ -13,7 +13,7 @@
     "singleton": true,
     "assetHost": "http://glazier.s3.amazonaws.com",
     "shortName": "stackoverflow-auth",
-    "repositoryName": "yapplabs/glazier-stackoverflow-auth",
+    "repositoryName": "yapplabs/stackoverflow-auth",
     "env": {
       "dev": {
         "oauthKey": "Fas5EB8w4OrUF6xinTNW5Q(("

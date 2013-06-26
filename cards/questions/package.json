@@ -7,7 +7,7 @@
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
     "shortName": "stackoverflow-questions",
-    "repositoryName": "yapplabs/glazier-stackoverflow-questions"
+    "repositoryName": "yapplabs/stackoverflow-questions"
   },
   "version": "0.0.1",
   "description": "A starting point for making glazier cards",
