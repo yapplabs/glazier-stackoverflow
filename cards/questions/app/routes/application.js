@@ -50,7 +50,7 @@ function fetch() {
 var ApplicationRoute = Ember.Route.extend({
   events: {
     currentUserChanged: function(user) {
-      var applicationController = route.controllerFor('application');
+      var applicationController = this.controllerFor('application');
 
       fetch().then(function(hash){
         applicationController.set('model', hash.questions);

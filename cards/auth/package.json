@@ -3,7 +3,8 @@
   "glazierConfig": {
     "consumes": [
       "oauth",
-      "fullXhr"
+      "fullXhr",
+      "userStorage"
     ],
     "provides": [
       "authenticatedStackoverflowApi"
