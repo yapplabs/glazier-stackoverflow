@@ -26,14 +26,13 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
       var card = this.card;
 
       card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
-
         if (!ajaxOpts.data) {
           ajaxOpts.data = {};
         }
 
         ajaxOpts.url = 'https://api.stackexchange.com' + ajaxOpts.url;
         ajaxOpts.data.access_token = accessToken;
-        ajaxOpts.data.key = "Fas5EB8w4OrUF6xinTNW5Q(("; // TODO: make this configurable
+        ajaxOpts.data.key = card.data.env.oauthKey;
 
         return card.consumers.fullXhr.request('ajax', ajaxOpts).
           then(function (data) { promise.resolve(data); });

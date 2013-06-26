@@ -36,8 +36,8 @@ var card = Conductor.card({
   render: function (intent, dimensions) {
     if (!dimensions) {
       dimensions = {
-        width: 500,
-        height: 300
+        width: 0,
+        height: 0
       };
     }
 
