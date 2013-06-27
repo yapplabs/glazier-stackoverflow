@@ -16,10 +16,12 @@
     "repositoryName": "yapplabs/stackoverflow-auth",
     "env": {
       "dev": {
-        "oauthKey": "Fas5EB8w4OrUF6xinTNW5Q(("
+        "oauthKey": "Fas5EB8w4OrUF6xinTNW5Q((",
+        "oauthClientId": "1693"
       },
       "prod": {
-        "oauthKey": "4G6hYFCEGmkmmNHvNCex8Q(("
+        "oauthKey": "4G6hYFCEGmkmmNHvNCex8Q((",
+        "oauthClientId": "1714"
       }
     }
   },
