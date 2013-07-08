@@ -13,7 +13,7 @@ Glazier StackOverflow auth card
     bundle exec rails console
 
     # lookup the CardManifest record
-    cm = CardManifest.where(name: 'yapplabs/glazier-stackoverflow-auth').first
+    cm = CardManifest.where(name: 'yapplabs/stackoverflow-auth').first
 
     # create a Pane record
     pane = Pane.new
