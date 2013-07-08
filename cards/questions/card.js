@@ -5,6 +5,7 @@ Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/loader.js');
 Conductor.requireCSS('/cards/stackoverflow-questions/card.css');
+Conductor.requireCSS('/css/glazier_card.css');
 
 var card = Conductor.card({
   consumers: {
