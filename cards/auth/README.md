@@ -12,14 +12,6 @@ Glazier StackOverflow auth card
     # in `glazier/glazier-server/`
     bundle exec rails console
 
-    # lookup the CardManifest record
-    cm = CardManifest.where(name: 'yapplabs/stackoverflow-auth').first
-
-    # create a Pane record
-    pane = Pane.new
-    pane.card_manifest_name = cm.name
-    pane.save
-
     # add the Pane to the dashboard of your choosing
-    db = Dashboard.where(repository: 'yapplabs/glazier').first
-    db.panes.push(pane)
+    db = Dashboard.where(repository: 'emberjs/ember.js').first
+    db.add_pane('yapplabs/stackoverflow-auth')
