@@ -52,5 +52,5 @@ var card = Conductor.card({
   }
 });
 
-export = card;
+export default card;
 

@@ -24,44 +24,25 @@ var Question = {
   }
 };
 
-var Repo = {
-  /*
-    @public
-
-    Retrieves the current repository name.
-
-    @method getCurrentRepositoryName
-    @returns {Ember.RSVP.Promise}
-  */
-  getCurrentRepositoryName: function(){
-    return Ember.RSVP.resolve(card.consumers.repository.request('getRepository'));
-  }
-};
-
-function fetch() {
-  return Ember.RSVP.hash({
-    repositoryName: Repo.getCurrentRepositoryName()
-  }).then(function(hash){
-    hash.questions = Question.findAllByRepositoryName(hash.repositoryName);
-    return Ember.RSVP.hash(hash);
-  });
+function fetch(repositoryName) {
+  return Question.findAllByRepositoryName(repositoryName);
 }
 
 var ApplicationRoute = Ember.Route.extend({
   events: {
     currentUserChanged: function(user) {
-      var applicationController = this.controllerFor('application');
+      var applicationController = this.controllerFor('application'),
+          repositoryName = this.cardDataStore.get('repositoryName');
 
-      fetch().then(function(hash){
+      Question.findAllByRepositoryName(repositoryName).then(function(hash){
         applicationController.set('model', hash.questions);
       }).then(null, Conductor.error);
     }
   },
 
   model: function(){
-    return fetch().then(function(hash) {
-      return hash.questions;
-    });
+    var repositoryName = this.cardDataStore.get('repositoryName');
+    return Question.findAllByRepositoryName(repositoryName);
   }
 });
 
