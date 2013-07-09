@@ -1,5 +1,5 @@
-import 'card' as card;
-import 'conductor' as Conductor;
+import card from 'card';
+import Conductor from 'conductor';
 
 var Question = {
   /*
@@ -65,4 +65,4 @@ var ApplicationRoute = Ember.Route.extend({
   }
 });
 
-export = ApplicationRoute;
+export default ApplicationRoute;

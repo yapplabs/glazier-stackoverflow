@@ -1,5 +1,5 @@
-import 'conductor' as Conductor;
-import 'app/consumers/authenticated_stackoverflow_api' as AuthenticatedStackoverflowApiConsumer;
+import Conductor from 'conductor';
+import AuthenticatedStackoverflowApiConsumer from 'app/consumers/authenticated_stackoverflow_api';
 
 Conductor.require('/vendor/jquery.js');
 Conductor.requireCSS('/cards/stackoverflow-auth/card.css');

@@ -1,4 +1,4 @@
-import 'conductor' as Conductor;
+import Conductor from 'conductor';
 
 /*
   Provides authenticated StackOverflow api access
@@ -42,4 +42,4 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
   }
 });
 
-export = AuthenticatedStackoverflowApiConsumer;
+export default AuthenticatedStackoverflowApiConsumer;

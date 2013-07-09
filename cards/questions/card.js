@@ -1,4 +1,4 @@
-import 'conductor' as Conductor;
+import Conductor from 'conductor';
 
 Conductor.require('/vendor/jquery.js');
 Conductor.require('/vendor/handlebars.js');
@@ -49,5 +49,5 @@ var card = Conductor.card({
   }
 });
 
-export = card;
+export default card;
 
