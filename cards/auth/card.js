@@ -20,14 +20,14 @@ var card = Conductor.card({
           authorizeUrl: url
         }).then(function(accessToken) {
           // TODO this token expires...
-          card.consumers.userStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
+          card.consumers.paneUserStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
           return accessToken;
         });
       }
     }),
     'fullXhr': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': AuthenticatedStackoverflowApiConsumer,
-    'userStorage': Conductor.Oasis.Consumer
+    'paneUserStorage': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
