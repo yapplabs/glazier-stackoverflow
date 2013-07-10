@@ -27,29 +27,6 @@ var card = Conductor.card({
     'fullXhr': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': AuthenticatedStackoverflowApiConsumer,
     'paneTypeUserStorage': Conductor.Oasis.Consumer
-  },
-
-  render: function (intent, dimensions) {
-    if (!dimensions) {
-      dimensions = {
-        width: 0,
-        height: 0
-      };
-    }
-
-    document.body.innerHTML = "<div id=\"card\">This will be hidden.</div>";
-  },
-
-  activate: function() {
-  },
-
-  resize: function(dimensions) {
-    var width = Math.min(dimensions.width, 500);
-    var height = Math.min(dimensions.height, 500);
-
-    $('body>div').css({
-      width: width
-    });
   }
 });
 

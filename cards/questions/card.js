@@ -14,18 +14,8 @@ var card = Conductor.card({
   },
 
   render: function (intent, dimensions) {
-    if (!dimensions) {
-      dimensions = {
-        width: 500,
-        height: 300
-      };
-    }
-
     document.body.innerHTML = "<div id=\"card\"></div>";
-
     Ember.run(App, 'advanceReadiness');
-
-    return App;
   },
 
   activate: function() {
@@ -33,15 +23,6 @@ var card = Conductor.card({
     window.App = Application.create();
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
-  },
-
-  resize: function(dimensions) {
-    var width = Math.min(dimensions.width, 500);
-    var height = Math.min(dimensions.height, 500);
-
-    $('body>div').css({
-      width: width
-    });
   }
 });
 
