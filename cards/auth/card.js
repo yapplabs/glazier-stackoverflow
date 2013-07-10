@@ -9,8 +9,7 @@ var card = Conductor.card({
   consumers: {
     'oauth': Conductor.Oasis.Consumer.extend({
       getAccessTokenPromise: function(){
-        // TODO: Use paneTypeUserEntries and paneTypeUserStorage instead
-        var accessToken = card.data.paneUserEntries.stackOverflowAccessToken;
+        var accessToken = card.data.paneTypeUserEntries.stackOverflowAccessToken;
         if (accessToken) {
           return RSVP.resolve(accessToken);
         }
@@ -20,14 +19,14 @@ var card = Conductor.card({
           authorizeUrl: url
         }).then(function(accessToken) {
           // TODO this token expires...
-          card.consumers.paneUserStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
+          card.consumers.paneTypeUserStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
           return accessToken;
         });
       }
     }),
     'fullXhr': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': AuthenticatedStackoverflowApiConsumer,
-    'paneUserStorage': Conductor.Oasis.Consumer
+    'paneTypeUserStorage': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
