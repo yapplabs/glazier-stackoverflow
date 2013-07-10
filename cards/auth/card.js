@@ -3,7 +3,7 @@ import AuthenticatedStackoverflowApiConsumer from 'app/consumers/authenticated_s
 var RSVP = Conductor.Oasis.RSVP;
 
 Conductor.require('/vendor/jquery.js');
-Conductor.requireCSS('/cards/stackoverflow-auth/card.css');
+Conductor.requireCSS('card.css');
 
 var card = Conductor.card({
   consumers: {

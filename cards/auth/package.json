@@ -1,6 +1,7 @@
 {
-  "name": "stackoverflow-auth",
+  "name": "glazier-stackoverflow-auth",
   "glazierConfig": {
+    "displayName": "stackoverflow-auth",
     "consumes": [
       "oauth",
       "fullXhr",
@@ -12,8 +13,6 @@
     "ui": false,
     "singleton": true,
     "assetHost": "http://glazier.s3.amazonaws.com",
-    "shortName": "stackoverflow-auth",
-    "repositoryName": "yapplabs/stackoverflow-auth",
     "env": {
       "dev": {
         "oauthKey": "Fas5EB8w4OrUF6xinTNW5Q((",
@@ -31,11 +30,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "author": "Yapp Labs",
   "repository": {
     "type": "git",
     "url": "https://github.com/yapplabs/glazier-stackoverflow.git"
   },
-  "author": "Yapp Labs",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {

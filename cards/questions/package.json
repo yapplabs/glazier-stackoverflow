@@ -1,13 +1,13 @@
 {
-  "name": "stackoverflow-questions",
+  "name": "glazier-stackoverflow-questions",
   "glazierConfig": {
+    "displayName": "stackoverflow-questions",
     "consumes": [
       "repository",
       "authenticatedStackoverflowApi"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
-    "shortName": "stackoverflow-questions",
-    "repositoryName": "yapplabs/stackoverflow-questions"
+    "shortName": "stackoverflow-questions"
   },
   "version": "0.0.1",
   "description": "A starting point for making glazier cards",
@@ -15,11 +15,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "author": "Yapp Labs",
   "repository": {
     "type": "git",
     "url": "https://github.com/yapplabs/glazier-stackoverflow.git"
   },
-  "author": "Yapp Labs",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
