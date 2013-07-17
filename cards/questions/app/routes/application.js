@@ -2,10 +2,6 @@ import card from 'card';
 import Conductor from 'conductor';
 import Question from 'app/models/question';
 
-function fetch(repositoryName) {
-  return Question.findAllByRepositoryName(repositoryName);
-}
-
 var ApplicationRoute = Ember.Route.extend({
   events: {
     currentUserChanged: function(user) {
