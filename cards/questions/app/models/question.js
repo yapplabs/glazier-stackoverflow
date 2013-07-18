@@ -13,6 +13,7 @@ var Question = {
   findAllByRepositoryName: function(repositoryName) {
     var tag = repositoryName.split("/")[1];
     var url = "/2.1/questions?order=desc&sort=creation&tagged=" + tag + "&site=stackoverflow";
+
     return card.consumers.authenticatedStackoverflowApi.request("ajax", {
       url: url,
       type: 'GET',

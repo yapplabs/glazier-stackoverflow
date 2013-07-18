@@ -18,8 +18,29 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
     /*
       @public
 
+      @method connect
+    */
+    connect: function() {
+      var card = this.card;
+      return card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
+        return !!accessToken;
+      });
+    },
+
+    /*
+      @public
+
+      @method connected
+    */
+    connected: function() {
+      var card = this.card;
+      return !!card.data.paneTypeUserEntries.stackOverflowAccessToken;
+    },
+
+    /*
+      @public
+
       @method ajax
-      @param promise {Conductor.Oasis.RSVP.Promise}
       @param ajaxOpts {Object}
     */
     ajax: function (ajaxOpts) {

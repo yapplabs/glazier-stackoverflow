@@ -21,6 +21,12 @@ var card = Conductor.card({
   activate: function() {
     var Application = requireModule('app/application');
     window.App = Application.create();
+
+    App.Router.map(function() {
+      this.route('questions');
+      this.route('unconnected');
+    });
+
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
   }

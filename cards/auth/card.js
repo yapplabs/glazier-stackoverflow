@@ -20,6 +20,10 @@ var card = Conductor.card({
         }).then(function(accessToken) {
           // TODO this token expires...
           card.consumers.paneTypeUserStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
+
+          // TODO: this should happen automatically when we setItem above
+          card.data.paneTypeUserEntries.stackOverflowAccessToken = accessToken; // this is a hack
+
           return accessToken;
         });
       }
