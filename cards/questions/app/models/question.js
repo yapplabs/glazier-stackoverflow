@@ -19,6 +19,9 @@ var Question = {
       dataType: 'json'
     }).then(function(data) {
       return data.items;
+    }).then(null, function(reason) {
+      console.log('user declined oauth for Question.findAllByRepositoryName?', reason);
+      throw reason;
     });
   }
 };

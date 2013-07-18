@@ -22,7 +22,7 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
       @param promise {Conductor.Oasis.RSVP.Promise}
       @param ajaxOpts {Object}
     */
-    ajax: function (promise, ajaxOpts) {
+    ajax: function (ajaxOpts) {
       var card = this.card;
 
       return card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
@@ -34,9 +34,7 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
         ajaxOpts.data.access_token = accessToken;
         ajaxOpts.data.key = card.data.env.oauthKey;
 
-        return card.consumers.fullXhr.request('ajax', ajaxOpts).
-          then(function (data) { promise.resolve(data); });
-
+        return card.consumers.fullXhr.request('ajax', ajaxOpts);
       }).then(null, Conductor.error);
     }
   }
