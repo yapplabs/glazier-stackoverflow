@@ -14,6 +14,6 @@ Glazier StackOverflow questions card
 
     # add the Pane to the dashboard of your choosing
     db = Dashboard.where(repository: 'emberjs/ember.js').first
-    db.add_pane('yapplabs/stackoverflow-questions')
-    
+    db.add_pane('glazier-stackoverflow-questions')
+
     # make sure to also install the stackoverflow-auth card

@@ -14,4 +14,4 @@ Glazier StackOverflow auth card
 
     # add the Pane to the dashboard of your choosing
     db = Dashboard.where(repository: 'emberjs/ember.js').first
-    db.add_pane('yapplabs/stackoverflow-auth')
+    db.add_pane('glazier-stackoverflow-auth')
