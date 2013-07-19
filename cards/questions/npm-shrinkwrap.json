@@ -5,7 +5,7 @@
     "glazier-card-grunt-config": {
       "version": "0.2.0",
       "from": "glazier-card-grunt-config@0.2.0",
-      "resolved": "https://registry.npmjs.org/glazier-card-grunt-config/-/glazier-card-grunt-config-0.0.7.tgz"
+      "resolved": "https://registry.npmjs.org/glazier-card-grunt-config/-/glazier-card-grunt-config-0.2.0.tgz"
     },
     "grunt-contrib-clean": {
       "version": "0.4.1",
@@ -22,7 +22,8 @@
     },
     "grunt-ember-templates": {
       "version": "0.4.10",
-      "from": "grunt-ember-templates@0.4.10"
+      "from": "grunt-ember-templates@0.4.10",
+      "resolved": "https://registry.npmjs.org/grunt-ember-templates/-/grunt-ember-templates-0.4.10.tgz"
     },
     "grunt-md5": {
       "version": "0.1.11",
