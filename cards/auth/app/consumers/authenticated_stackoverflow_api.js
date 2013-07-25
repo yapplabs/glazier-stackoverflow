@@ -22,8 +22,8 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
     */
     connect: function() {
       var card = this.card;
-      return card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
-        return !!accessToken;
+      return card.consumers.oauth.getAccessTokenPromise().then(function (results) {
+        return !!(results && results.accessToken);
       });
     },
 
@@ -46,7 +46,8 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
     ajax: function (ajaxOpts) {
       var card = this.card;
 
-      return card.consumers.oauth.getAccessTokenPromise().then(function (accessToken) {
+      return card.consumers.oauth.getAccessTokenPromise().then(function (results) {
+        var accessToken = results.accessToken;
         if (!ajaxOpts.data) {
           ajaxOpts.data = {};
         }
