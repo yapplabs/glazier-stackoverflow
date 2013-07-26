@@ -3,6 +3,7 @@
   "glazierConfig": {
     "displayName": "Stackoverflow Questions",
     "consumes": [
+      "adminStorage",
       "authenticatedStackoverflowApi"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",

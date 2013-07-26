@@ -6,12 +6,11 @@ var Question = {
 
     Fetches all questions given a repository name.
 
-    @method findAllByRepositoryName
-    @param  repositoryName {String}
+    @method findAllByTag
+    @param  tag {String}
     @returns {Ember.RSVP.Promise}
   */
-  findAllByRepositoryName: function(repositoryName) {
-    var tag = repositoryName.split("/")[1];
+  findAllByTag: function(tag) {
     var url = "/2.1/questions?order=desc&sort=creation&tagged=" + tag + "&site=stackoverflow";
 
     return card.consumers.authenticatedStackoverflowApi.request("ajax", {
@@ -21,7 +20,7 @@ var Question = {
     }).then(function(data) {
       return data.items;
     }).then(null, function(reason) {
-      console.log('user declined oauth for Question.findAllByRepositoryName?', reason);
+      console.log('user declined oauth for Question.findAllByTag?', reason);
       throw reason;
     });
   }

@@ -1,3 +1,11 @@
+{{#if canEdit}}
+  {{#linkTo 'edit'}}Edit tag{{/linkTo}}
+{{/if}}
+
 {{#each}}
   <div>{{question_id}}: {{title}}</div>
 {{/each}}
+
+{{#unless length}}
+  <div>There are no questions for this tag</div>
+{{/unless}}

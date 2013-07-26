@@ -10,6 +10,7 @@ Conductor.requireCSS('/css/glazier_card.css');
 
 var card = Conductor.card({
   consumers: {
+    'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': Conductor.Oasis.Consumer
   },
 
@@ -26,10 +27,14 @@ var card = Conductor.card({
     App.Router.map(function() {
       this.route('questions');
       this.route('unconnected');
+      this.route('edit');
     });
 
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
+    Ember.keys(Object.getPrototypeOf(this.consumers)).forEach(function(name){
+      App.register('consumer:' + name, this.consumers[name], { instantiate: false });
+    }, this);
   }
 });
 

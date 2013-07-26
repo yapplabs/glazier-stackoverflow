@@ -13,8 +13,8 @@ var QuestionsRoute = Ember.Route.extend({
   },
 
   model: function(){
-    var repositoryName = this.cardDataStore.get('repositoryName');
-    return Question.findAllByRepositoryName(repositoryName);
+    var tag = this.controllerFor('application').get('tag');
+    return Question.findAllByTag(tag);
   }
 });
 
