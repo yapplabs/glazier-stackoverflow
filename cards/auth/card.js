@@ -9,22 +9,39 @@ var card = Conductor.card({
   consumers: {
     'oauth': Conductor.Oasis.Consumer.extend({
       getAccessTokenPromise: function(){
+        var now = +new Date();
         var accessToken = card.data.paneTypeUserEntries.stackOverflowAccessToken;
-        if (accessToken) {
+        var expiresAt = card.data.paneTypeUserEntries.stackOverflowAccessTokenExpiresAt;
+        if (accessToken && expiresAt && expiresAt > now) {
           return RSVP.resolve(accessToken);
         }
 
         var url = 'https://stackexchange.com/oauth/dialog';
         return this.request('authorize', {
           authorizeUrl: url
-        }).then(function(accessToken) {
-          // TODO this token expires...
-          card.consumers.paneTypeUserStorage.request('setItem', 'stackOverflowAccessToken', accessToken).then(undefined, Conductor.error);
+        }).then(function(data) {
+          var accessToken = data.access_token;
+          var expires = data.expires; // seconds
+          var expiresMs = expires * 1000;
+          var expiresAt = now + expiresMs;
+
+          var paneTypeUserStorage = card.consumers.paneTypeUserStorage;
+
+          paneTypeUserStorage.request(
+            'setItem', 'stackOverflowAccessToken', accessToken
+          ).then(undefined, Conductor.error);
+
+          paneTypeUserStorage.request(
+            'setItem', 'stackOverflowAccessTokenExpiresAt', expiresAt
+          ).then(undefined, Conductor.error);
 
           // TODO: this should happen automatically when we setItem above
-          card.data.paneTypeUserEntries.stackOverflowAccessToken = accessToken; // this is a hack
+          card.data.paneTypeUserEntries.stackOverflowAccessToken = accessToken;
+          card.data.paneTypeUserEntries.stackOverflowAccessTokenExpiresAt = expiresAt;
 
-          return accessToken;
+          console.log('stackOverflowAccessTokenExpiresAt', expiresAt);
+
+          return data;
         });
       }
     }),

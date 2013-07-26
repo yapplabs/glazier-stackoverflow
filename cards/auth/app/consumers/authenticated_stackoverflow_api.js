@@ -34,7 +34,10 @@ var AuthenticatedStackoverflowApiConsumer = Conductor.Oasis.Consumer.extend({
     */
     connected: function() {
       var card = this.card;
-      return !!card.data.paneTypeUserEntries.stackOverflowAccessToken;
+      var expiresAt = card.data.paneTypeUserEntries.stackOverflowAccessTokenExpiresAt;
+      var token = card.data.paneTypeUserEntries.stackOverflowAccessToken;
+      var now = +new Date();
+      return !!(expiresAt && token && expiresAt > now);
     },
 
     /*
