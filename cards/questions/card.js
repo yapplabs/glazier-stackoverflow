@@ -19,6 +19,7 @@ var card = Conductor.card({
   },
 
   activate: function() {
+    Conductor.Oasis.configure('eventCallback', Ember.run);
     var Application = requireModule('app/application');
     window.App = Application.create();
 
