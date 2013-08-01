@@ -15,6 +15,11 @@ var card = Conductor.card({
   },
 
   render: function (intent, dimensions) {
+    if (intent === 'edit') {
+      var router = window.App.__container__.lookup('router:main');
+      router.send('edit');
+      return;
+    }
     document.body.innerHTML = "<div id=\"card\"></div>";
     Ember.run(App, 'advanceReadiness');
   },

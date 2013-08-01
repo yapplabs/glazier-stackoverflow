@@ -15,6 +15,12 @@ var QuestionsRoute = Ember.Route.extend({
   model: function(){
     var tag = this.controllerFor('application').get('tag');
     return Question.findAllByTag(tag);
+  },
+
+  events: {
+    edit: function() {
+      this.transitionTo('edit');
+    }
   }
 });
 

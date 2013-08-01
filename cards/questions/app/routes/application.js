@@ -10,7 +10,8 @@ var ApplicationRoute = Ember.Route.extend({
       } else {
         return this.transitionTo('unconnected');
       }
-    }
+    },
+    edit: Ember.K
   }
 });
 
