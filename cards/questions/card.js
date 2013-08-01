@@ -35,6 +35,18 @@ var card = Conductor.card({
     Ember.keys(Object.getPrototypeOf(this.consumers)).forEach(function(name){
       App.register('consumer:' + name, this.consumers[name], { instantiate: false });
     }, this);
+  },
+  metadata: {
+    document: function() {
+      return {
+        title: "StackOverflow Questions"
+      };
+    },
+    card: function() {
+      return {
+        isEditable: true
+      };
+    }
   }
 });
 

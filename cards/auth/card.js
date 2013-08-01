@@ -48,6 +48,14 @@ var card = Conductor.card({
     'fullXhr': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': AuthenticatedStackoverflowApiConsumer,
     'paneTypeUserStorage': Conductor.Oasis.Consumer
+  },
+  metadata: {
+    document: function() {
+      return {};
+    },
+    card: function() {
+      return {};
+    }
   }
 });
 
