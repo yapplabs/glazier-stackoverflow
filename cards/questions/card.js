@@ -11,7 +11,24 @@ Conductor.requireCSS('/css/glazier_card.css');
 var card = Conductor.card({
   consumers: {
     'adminStorage': Conductor.Oasis.Consumer,
-    'authenticatedStackoverflowApi': Conductor.Oasis.Consumer
+    'authenticatedStackoverflowApi': Conductor.Oasis.Consumer,
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend({
+      controllers: ['cardMetadata'],
+      updateData: function(bucketName, data) {
+        this.send('updateData', { bucket: bucketName, data: data });
+      },
+      requests: {
+        getBucketData: function(bucketName) {
+          if (this.controllers.indexOf(bucketName) === -1) {
+            throw new Error('Invalid bucket name ' + bucketName);
+          } else {
+            // FUTURE: maybe have the bucket-backing objects registered as bucket: types
+            var controller = this.container.lookup('controller:' + bucketName);
+            return controller.getBucketData();
+          }
+        }
+      }
+    })
   },
 
   render: function (intent, dimensions) {
@@ -37,19 +54,11 @@ var card = Conductor.card({
 
     App.deferReadiness();
     App.register('card:main', this, { instantiate: false });
-    Ember.keys(Object.getPrototypeOf(this.consumers)).forEach(function(name){
-      App.register('consumer:' + name, this.consumers[name], { instantiate: false });
-    }, this);
   },
   metadata: {
     document: function() {
       return {
         title: "StackOverflow Questions"
-      };
-    },
-    card: function() {
-      return {
-        isEditable: true
       };
     }
   }

@@ -4,7 +4,8 @@
     "displayName": "Stackoverflow Questions",
     "consumes": [
       "adminStorage",
-      "authenticatedStackoverflowApi"
+      "authenticatedStackoverflowApi",
+      "remoteEmberObject"
     ],
     "assetHost": "http://glazier.s3.amazonaws.com",
     "shortName": "stackoverflow-questions"
