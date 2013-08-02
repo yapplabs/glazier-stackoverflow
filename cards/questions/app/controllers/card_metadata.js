@@ -5,7 +5,8 @@ var CardMetadataController = Ember.Controller.extend(RemoteEmberObjectMixin, {
   cardDataStore: null, //injected
   application: Ember.computed.alias('controllers.application'),
   publishedProperties: [
-    'isEditable'
+    'isEditable',
+    'isEditing'
   ],
   isEditable: Ember.computed.and('cardDataStore.isAdmin', 'application.user', 'application.connected')
 });

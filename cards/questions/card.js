@@ -9,6 +9,7 @@ Conductor.requireCSS('card.css');
 Conductor.requireCSS('/css/glazier_card.css');
 
 var card = Conductor.card({
+  card: null,
   consumers: {
     'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': Conductor.Oasis.Consumer,
@@ -32,19 +33,17 @@ var card = Conductor.card({
   },
 
   render: function (intent, dimensions) {
-    if (intent === 'edit') {
-      var router = window.App.__container__.lookup('router:main');
-      router.send('edit');
-      return;
+    if (!document.getElementById('card')) {
+      document.body.innerHTML = "<div id=\"card\"></div>";
     }
-    document.body.innerHTML = "<div id=\"card\"></div>";
-    Ember.run(App, 'advanceReadiness');
+
+    return this.App.render(intent, dimensions);
   },
 
   activate: function() {
     Conductor.Oasis.configure('eventCallback', Ember.run);
     var Application = requireModule('app/application');
-    window.App = Application.create();
+    window.App = this.App = Application.create();
 
     App.Router.map(function() {
       this.route('questions');

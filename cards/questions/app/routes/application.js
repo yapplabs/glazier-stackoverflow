@@ -11,7 +11,9 @@ var ApplicationRoute = Ember.Route.extend({
         return this.transitionTo('unconnected');
       }
     },
-    edit: Ember.K
+    renderEdit: function(){
+      this.transitionTo('edit');
+    }
   }
 });
 
