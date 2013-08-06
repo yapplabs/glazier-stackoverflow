@@ -4,22 +4,19 @@ Conductor.require('/vendor/jquery.js');
 Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/ember_card_bridge.js');
-Conductor.require('/vendor/loader.js');
-Conductor.requireCSS('card.css');
+
 Conductor.requireCSS('/css/glazier_card.css');
+Conductor.requireCSS('card.css');
 
 import remoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
-
-remoteEmberObjectConsumer.controllers = [
-  'cardMetadata'
-];
+remoteEmberObjectConsumer.controllers = [ 'cardMetadata' ];
 
 var card = Conductor.card({
-  card: null,
+  App: null,
   consumers: {
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer),
     'adminStorage': Conductor.Oasis.Consumer,
-    'authenticatedStackoverflowApi': Conductor.Oasis.Consumer,
-    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer)
+    'authenticatedStackoverflowApi': Conductor.Oasis.Consumer
   },
 
   render: function (intent, dimensions) {
@@ -31,17 +28,16 @@ var card = Conductor.card({
   },
 
   activate: function() {
-    var Application = requireModule('app/application');
-    window.App = this.App = Application.create();
+    window.App = this.App = requireModule('app/application').create();
 
-    App.Router.map(function() {
+    this.App.Router.map(function() {
       this.route('questions');
       this.route('unconnected');
       this.route('edit');
     });
 
-    App.deferReadiness();
-    App.register('card:main', this, { instantiate: false });
+    this.App.deferReadiness();
+    this.App.register('card:main', this, { instantiate: false });
   },
   metadata: {
     document: function() {
