@@ -20,7 +20,7 @@ var QuestionsRoute = Ember.Route.extend({
     var tag = this.controllerFor('application').get('tag');
     return Ember.RSVP.hash({
       questions: Question.findAllByTag(tag),
-      tagInfo: TagInfo.find(tag),
+      tagInfo: TagInfo.find(tag)
     });
   },
 
