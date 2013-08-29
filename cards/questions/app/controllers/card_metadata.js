@@ -6,9 +6,19 @@ var CardMetadataController = Ember.Controller.extend(RemoteEmberObjectMixin, {
   application: Ember.computed.alias('controllers.application'),
   publishedProperties: [
     'isEditable',
-    'isEditing'
+    'isEditing',
+    'toolbar'
   ],
-  isEditable: Ember.computed.and('cardDataStore.isAdmin', 'application.user', 'application.connected')
+  isEditable: Ember.computed.and('cardDataStore.isAdmin', 'application.user', 'application.connected'),
+  numQuestions: null,
+  toolbar: function(){
+    var numQuestions = this.get('numQuestions');
+    if (numQuestions) {
+      return [ { text: '' + numQuestions + ' questions' }];
+    } else {
+      return [];
+    }
+  }.property('numQuestions')
 });
 
 export default CardMetadataController;
