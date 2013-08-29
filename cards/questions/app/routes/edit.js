@@ -11,7 +11,7 @@ var EditRoute = Ember.Route.extend({
   adminStorageConsumer: function() {
     return this.container.lookup('consumer:adminStorage');
   }.property(),
-  events: {
+  actions: {
     renderDefault: function(){
       this.transitionTo('index');
     },

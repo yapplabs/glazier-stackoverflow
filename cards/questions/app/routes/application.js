@@ -3,7 +3,7 @@ import Conductor from 'conductor';
 import Question from 'app/models/question';
 
 var ApplicationRoute = Ember.Route.extend({
-  events: {
+  actions: {
     currentUserChanged: function(user) {
       if (user) {
         return this.transitionTo('questions');
