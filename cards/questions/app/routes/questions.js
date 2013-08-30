@@ -6,6 +6,9 @@ var QuestionsRoute = Ember.Route.extend({
   activate: function() {
     this.controllerFor('application').set('connected', true);
   },
+  deactivate: function(){
+    this.controllerFor('cardMetadata').set('numQuestions', null);
+  },
 
   beforeModel: function() {
     var self = this;
