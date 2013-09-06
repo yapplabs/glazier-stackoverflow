@@ -8,13 +8,13 @@ Conductor.require('/vendor/ember_card_bridge.js');
 Conductor.requireCSS('/css/glazier_card.css');
 Conductor.requireCSS('card.css');
 
-import remoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
-remoteEmberObjectConsumer.controllers = [ 'cardMetadata' ];
+import RemoteEmberObjectConsumer from 'app/consumers/remote_ember_object';
+RemoteEmberObjectConsumer.controllers = [ 'cardMetadata' ];
 
 var card = Conductor.card({
   App: null,
   consumers: {
-    'remoteEmberObject': Conductor.Oasis.Consumer.extend(remoteEmberObjectConsumer),
+    'remoteEmberObject': Conductor.Oasis.Consumer.extend(RemoteEmberObjectConsumer),
     'adminStorage': Conductor.Oasis.Consumer,
     'authenticatedStackoverflowApi': Conductor.Oasis.Consumer
   },
