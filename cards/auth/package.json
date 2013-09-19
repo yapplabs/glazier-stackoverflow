@@ -12,7 +12,7 @@
     ],
     "ui": false,
     "singleton": true,
-    "assetHost": "http://glazier.s3.amazonaws.com",
+    "assetHost": "https://glazier.s3.amazonaws.com",
     "env": {
       "dev": {
         "oauthKey": "Fas5EB8w4OrUF6xinTNW5Q((",

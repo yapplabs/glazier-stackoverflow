@@ -7,7 +7,7 @@
       "authenticatedStackoverflowApi",
       "remoteEmberObject"
     ],
-    "assetHost": "http://glazier.s3.amazonaws.com",
+    "assetHost": "https://glazier.s3.amazonaws.com",
     "shortName": "stackoverflow-questions"
   },
   "version": "0.0.1",
