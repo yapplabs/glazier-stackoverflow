@@ -7,6 +7,6 @@ var Application = Ember.Application.extend({
   Router: Ember.Router
 });
 
-requireModule('templates');
+require('templates');
 
 export default Application;

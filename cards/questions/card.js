@@ -4,6 +4,7 @@ Conductor.require('/vendor/jquery.js');
 Conductor.require('/vendor/handlebars.js');
 Conductor.require('/vendor/ember-latest.js');
 Conductor.require('/vendor/ember_card_bridge.js');
+Conductor.require('/vendor/resolver.js');
 
 Conductor.requireCSS('/css/glazier_card.css');
 Conductor.requireCSS('card.css');
@@ -28,7 +29,7 @@ var card = Conductor.card({
   },
 
   activate: function() {
-    window.App = this.App = requireModule('app/application').create();
+    window.App = this.App = require('app/application').create();
 
     this.App.Router.map(function() {
       this.route('questions');
